@@ -1,3 +1,3 @@
-# MealFinder
+# Vanilla-JS-Projects
 
-In this application we built a meal finder that works with the meal D.B. API.
+1. Meal Finder
