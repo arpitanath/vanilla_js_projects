@@ -1,6 +1,6 @@
-#Dynamic Table creation using HTML, CSS , Javascript
+# Dynamic Table creation using HTML, CSS , Javascript
 
-#Project Specifications
+# Project Specifications
 * Generating table dynamically
 * Search
 * Sort
