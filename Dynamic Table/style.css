@@ -1,0 +1,18 @@
+body, button , input{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#tbl_id{
+   
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tbl_id td , #tbl_id th{
+    border:1px solid #ddd;
+    padding:8px;
+}
+
+#tbl_id tr:nth-child(odd){background-color: #f2f2f2}
+
+#tbl_id th{background-color: #4caf50; color:white;}
