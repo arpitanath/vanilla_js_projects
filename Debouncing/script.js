@@ -1,19 +1,24 @@
-var  timerId;
-var  searchBoxDom  =  document.getElementById('search-box');
+let  timerId;
+let  searchBoxDom  =  document.getElementById('search-box');
 function  makeAPICall() {
-	var  debounceDom  =  document.getElementById('debounce-count');
-	var  debounceCount  =  debounceDom.innerHTML  ||  0;
-	
+	//counting how many times makeAPICall was called
+	let  debounceDom  =  document.getElementById('debounce-count');
+	let  debounceCount  =  debounceDom.innerHTML  ||  0;
 	debounceDom.innerHTML  =  parseInt(debounceCount) +  1
 }
-var  debounceFunction  =  function (func, delay) {
+let  debounceFunction  =  function (func, delay) {
+	
+	//everytime timerid is cleared so , function inside settimeout will not be called.It will be only called in the last call.
 	clearTimeout(timerId)
 	timerId  =  setTimeout(func, delay)
 }
 searchBoxDom.addEventListener('input', function () {
-	var  apiCallCountDom  =  document.getElementById('show-api-call-count');
-	var  apiCallCount  =  apiCallCountDom.innerHTML  ||  0;
+	//counting how many times user types
+	let  apiCallCountDom  =  document.getElementById('show-api-call-count');
+	let  apiCallCount  =  apiCallCountDom.innerHTML  ||  0;
 	apiCallCount  =  parseInt(apiCallCount) +  1;
 	apiCallCountDom.innerHTML  =  apiCallCount;
+
+	//debounce function for makeAPIcall
 	debounceFunction(makeAPICall, 200)
 })
