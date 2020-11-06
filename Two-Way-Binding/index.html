@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Two Way Binding</title>
+</head>
+<body>
+   <div>
+       <label for="firstName"> Enter your FirstName: </label>
+       <input type="text" id="firstName" data-model="firstName"/>
+   </div> 
+   <div>
+    <label for="lastName">Enter your Lastname: </label>
+    <input type="text" id="lastName" data-model="lastName"/>
+</div> 
+<div>
+   <h1 data-binding="firstName"></h1>
+   <h2 data-binding="lastName"></h2>
+</div> 
+<script src="script.js"></script>
+</body>
+</html>
