@@ -1,0 +1,82 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "1",
+      "employee_name": "Arpita Nath",
+      "employee_salary": "30800",
+      "employee_age": "28",
+      "profile_image": ""
+    },
+    {
+      "id": "2",
+      "employee_name": "Sharmishtha Nath",
+      "employee_salary": "2220800",
+      "employee_age": "18",
+      "profile_image": ""
+    },
+    {
+      "id": "3",
+      "employee_name": "Anita Nath",
+      "employee_salary": "20800",
+      "employee_age": "54",
+      "profile_image": ""
+    },
+    {
+      "id": "4",
+      "employee_name": "Sushant",
+      "employee_salary": "33320800",
+      "employee_age": "32",
+      "profile_image": ""
+    },
+    {
+      "id": "5",
+      "employee_name": "Arti Bahalavi",
+      "employee_salary": "302222800",
+      "employee_age": "28",
+      "profile_image": ""
+    },
+    {
+      "id": "6",
+      "employee_name": "Smith Morawala",
+      "employee_salary": "10800",
+      "employee_age": "18",
+      "profile_image": ""
+    },
+    {
+      "id": "7",
+      "employee_name": "Aditi Rai",
+      "employee_salary": "208004567",
+      "employee_age": "54",
+      "profile_image": ""
+    },
+    {
+      "id": "8",
+      "employee_name": "Vishnu",
+      "employee_salary": "88800",
+      "employee_age": "32",
+      "profile_image": ""
+    },
+    {
+      "id": "9",
+      "employee_name": "Rajshree",
+      "employee_salary": "7800",
+      "employee_age": "54",
+      "profile_image": ""
+    },
+    {
+      "id": "10",
+      "employee_name": "Peepli",
+      "employee_salary": "800",
+      "employee_age": "32",
+      "profile_image": ""
+    },
+    {
+      "id": "11",
+      "employee_name": "chupi",
+      "employee_salary": "1800",
+      "employee_age": "16",
+      "profile_image": ""
+    }
+  ]
+}
