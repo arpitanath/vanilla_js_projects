@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Carousel</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="carousel">
+      <div class="slides">
+        <div class="slide current">
+          <img src="https://picsum.photos/id/237/600" />
+        </div>
+        <div class="slide">
+          <img src="https://picsum.photos/id/238/600" />
+        </div>
+        <div class="slide">
+          <img src="https://picsum.photos/id/239/600" />
+        </div>
+        <div class="slide">
+          <img src="https://picsum.photos/id/240/600" />
+        </div>
+      </div>
+      <div class="pointers">
+        <div class="left">
+          <button id="leftb" class="clickable"><</button>
+        </div>
+        <div class="right">
+          <button id="rightb" class="clickable">></button>
+        </div>
+      </div>
+      <div class="dots">
+        <span class="dot curDot clickable"></span>
+        <span class="dot clickable"></span>
+        <span class="dot clickable"></span>
+        <span class="dot clickable"></span>
+      </div>
+    </div>
+    <script src="script.js" type="text/javascript"></script>
+  </body>
+</html>
