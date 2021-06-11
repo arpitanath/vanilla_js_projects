@@ -1,0 +1,16 @@
+body{
+    --file:"• ";
+    --folder: "▶";
+    --expanded: "▼";
+}
+
+.file::before{
+    content: var(--file);
+}
+
+.folder::before{
+    content: var(--folder);
+}
+.expanded::before{
+    content: var(--expanded);
+}
