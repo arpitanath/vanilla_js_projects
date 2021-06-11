@@ -95,6 +95,10 @@ function adjustArrow(element) {
   }
 }
 
+function addClassList(element, className) {
+  element.classList.add(className);
+}
+
 function addDataToDom(data, level = 0, parentElement) {
   if (
     parentElement.classList.contains("expanded") ||
@@ -107,20 +111,25 @@ function addDataToDom(data, level = 0, parentElement) {
   }
   for (let i = 0; i < data.length; i++) {
     const element = document.createElement("div");
-    element.classList.add("file");
+
+    if (data[i]?.children) {
+      addClassList(element, "expanded");
+    } else {
+      addClassList(element, "file");
+    }
+
     if (level !== 0) {
       element.style.paddingLeft = `${level * 20}px`;
-      if (data[i]?.children) {
-        element.classList.add("expanded");
-      }
     }
+
     element.innerHTML = data[i]["name"];
     parentElement.appendChild(element);
+
     if (
       data[i].children ||
       (data[i].children && data[i].children.length !== 0)
     ) {
-      element.classList.add("expanded");
+      addClassList(element, "expanded");
       addDataToDom(data[i].children, level + 1, element);
     }
   }
