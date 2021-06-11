@@ -1,15 +1,15 @@
 body{
     --file:"• ";
-    --folder: "▶";
-    --expanded: "▼";
+    --closed: "▶ ";
+    --expanded: "▼ ";
 }
 
 .file::before{
     content: var(--file);
 }
 
-.folder::before{
-    content: var(--folder);
+.closed::before{
+    content: var(--closed);
 }
 .expanded::before{
     content: var(--expanded);
