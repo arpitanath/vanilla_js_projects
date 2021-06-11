@@ -74,29 +74,27 @@ fetchData().then((res) => {
   data = res;
   console.log(data);
 
-  addDataToDom(data, (level = 0), container);
+  addDataToDom(data, (level = 0));
 });
 
-function addDataToDom(data, level = 0, parentElement) {
+function addDataToDom(data, level = 0) {
   for (let i = 0; i < data.length; i++) {
     const element = document.createElement("div");
     element.classList.add("file");
     if (level !== 0) {
-      element.textbefore = "test";
       element.style.paddingLeft = `${level * 10}px`;
       if(data[i]?.children){
         element.classList.add("expanded");
       }
     }
     element.innerHTML = data[i]["name"];
-    parentElement.appendChild(element);
-
+    container.appendChild(element);
     if (
       data[i].children ||
       (data[i].children && data[i].children.length !== 0)
     ) {
       element.classList.add("folder");
-      addDataToDom(data[i].children, level + 1, parentElement);
+      addDataToDom(data[i].children, level + 1);
     }
   }
 }
