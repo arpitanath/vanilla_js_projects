@@ -73,19 +73,25 @@ fetchData().then((res) => {
   addDataToDom(res, (level = 0), container);
 });
 
+function adjustDisplay(element, className) {
+  for (let i = 0; i < element.children.length; i++) {
+    element.children.item(i).style.display = className;
+  }
+}
+
+function adjustClassList(element, className) {
+  const classToBeAdded = className == "expanded" ? "closed" : "expanded";
+  element.classList.remove(className);
+  element.classList.add(classToBeAdded);
+}
+
 function adjustArrow(element) {
   if (element.classList.contains("expanded")) {
-    for (let i = 0; i < element.children.length; i++) {
-      element.children.item(i).style.display = "none";
-    }
-    element.classList.remove("expanded");
-    element.classList.add("closed");
+    adjustDisplay(element, "none");
+    adjustClassList(element, "expanded");
   } else {
-    for (let i = 0; i < element.children.length; i++) {
-      element.children.item(i).style.display = "block";
-    }
-    element.classList.remove("closed");
-    element.classList.add("expanded");
+    adjustDisplay(element, "block");
+    adjustClassList(element, "closed");
   }
 }
 
