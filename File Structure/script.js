@@ -67,34 +67,55 @@ function fetchData() {
   });
 }
 
-let data;
 const container = document.getElementById("container");
 
 fetchData().then((res) => {
-  data = res;
-  console.log(data);
-
-  addDataToDom(data, (level = 0));
+  addDataToDom(res, (level = 0), container);
 });
 
-function addDataToDom(data, level = 0) {
+function adjustArrow(element) {
+  if (element.classList.contains("expanded")) {
+    for (let i = 0; i < element.children.length; i++) {
+      element.children.item(i).style.display = "none";
+    }
+    element.classList.remove("expanded");
+    element.classList.add("closed");
+  } else {
+    for (let i = 0; i < element.children.length; i++) {
+      element.children.item(i).style.display = "block";
+    }
+    element.classList.remove("closed");
+    element.classList.add("expanded");
+  }
+}
+
+function addDataToDom(data, level = 0, parentElement) {
+  if (
+    parentElement.classList.contains("expanded") ||
+    parentElement.classList.contains("closed")
+  ) {
+    parentElement.addEventListener("click", function (e) {
+      e.stopImmediatePropagation();
+      adjustArrow(parentElement);
+    });
+  }
   for (let i = 0; i < data.length; i++) {
     const element = document.createElement("div");
     element.classList.add("file");
     if (level !== 0) {
-      element.style.paddingLeft = `${level * 10}px`;
-      if(data[i]?.children){
+      element.style.paddingLeft = `${level * 20}px`;
+      if (data[i]?.children) {
         element.classList.add("expanded");
       }
     }
     element.innerHTML = data[i]["name"];
-    container.appendChild(element);
+    parentElement.appendChild(element);
     if (
       data[i].children ||
       (data[i].children && data[i].children.length !== 0)
     ) {
-      element.classList.add("folder");
-      addDataToDom(data[i].children, level + 1);
+      element.classList.add("expanded");
+      addDataToDom(data[i].children, level + 1, element);
     }
   }
 }
