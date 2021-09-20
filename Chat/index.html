@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <div class="row">
+          <!-- <div class="col-25">
+            <label for="fname">Display Name</label>
+          </div> -->
+          <div class="col-75">
+            <input type="text" id="fname" placeholder="Display Name" />
+            <button id="display_submit" type="submit">Submit</button>
+          </div>
+        </div>
+        <br />
+        <br />
+      </form>
+      <div class="search-container">
+        <form>
+          <input
+            type="text"
+            id="searchText"
+            placeholder="Search.."
+            name="search"
+          />
+          <button type="submit" id="searchBtn">Search</button>
+        </form>
+      </div>
+      <div class="filter-container">
+        <form>
+          <label for="cars">Filter:</label>
+          <select name="type" id="type">
+            <option value="all">All</option>
+            <option value="Text">Text</option>
+            <option value="Image">Image</option>
+            <option value="video">Video</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <h1 class="name" id="dname">Display Name :<span id="setName"></span></h1>
+    <button id="clearLC" onclick="localStorage.clear()">
+      Clear local Storage
+    </button>
+    <div id="container">
+      <div id="chatDisp">
+        <table id="chats">
+          <tbody id="t_body"></tbody>
+        </table>
+      </div>
+      <div id="input">
+        <button id="sendMessage" for="messageInput">Submit</button>
+        <input id="messageInput" type="text" />
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="script.js"></script>
+</html>
