@@ -1,4 +1,4 @@
-(function() {
+(function () {
   let nam = document.getElementById("setName");
   let nameSubmitBtn = document.getElementById("display_submit");
   let nameInp = document.getElementById("fname");
@@ -42,7 +42,7 @@
   let chatHistory = JSON.parse(localStorage.getItem("chat"));
   let send = document.getElementById("sendMessage");
   let i = 0;
-  send.addEventListener("click", function() {
+  send.addEventListener("click", function () {
     if (tbody.innerHTML) {
       tbody.innerHTML = "";
     }
@@ -55,7 +55,7 @@
       name: enteredName,
       text: document.getElementById("messageInput").value,
       dateTime:
-        new Date().toLocaleTimeString() + " " + new Date().toDateString()
+        new Date().toLocaleTimeString() + " " + new Date().toDateString(),
     };
     chatHistory.push(message);
     document.getElementById("messageInput").value = "";
@@ -65,7 +65,7 @@
     addChattoDOM(localData, searchText);
   });
 
-  setInterval(function() {
+  setInterval(function () {
     localData = localStorage.getItem("chat");
     localData = JSON.parse(localData);
     if (!searchText) {
@@ -74,9 +74,9 @@
       }
       addChattoDOM(localData, searchText);
     }
-  }, 3000);
+  }, 6000);
 
-  function addChattoDOM(localData, searchText = void 0) {
+  async function  addChattoDOM(localData, searchText = void 0) {
     for (let i = 0; i < localData.length; i++) {
       const row = document.createElement("tr");
       const cell = document.createElement("td");
@@ -90,15 +90,25 @@
           "<div class='message'>" +
           "<p class='user'>" +
           localData[i].name +
-           " "+
+          " " +
           localData[i].dateTime +
-          "<div class='clear'></div>"+
+          "<div class='clear'></div>" +
           "<p class='chatp messageChat'>" +
           localData[i].text
             .toLowerCase()
             .replace(regex, "<mark>" + searchText + "</mark>") +
-          "</p>" ;
+          "</p>";
       } else {
+        const isValidURL = isUrlValid(localData[i].text);
+        const isValidImage = isValidURL ? await checkImage(localData[i].text) : false;
+        const element = !isValidURL
+          ? "<p class='messageChat'>" + localData[i].text + "</p>"
+          : isValidImage
+          ? `<img src =${localData[i].text} width="500" height="600">` +
+          "</img>"
+          : `<a href =${localData[i].text} target='_blank'>` +
+            localData[i].text +
+            "</a>";
         templateDiv =
           "<div class='message'>" +
           "<p class='user'>" +
@@ -106,9 +116,7 @@
           " " +
           localData[i].dateTime +
           "</p>" +
-          "<p class='messageChat'>" +
-          localData[i].text +
-          "</p>" +
+          element +
           "<div class='clear'></div>" +
           "</div>" +
           "<p class='datetime'>" +
@@ -126,16 +134,15 @@
     tbody.appendChild(fragment);
   }
 
-  function validURL(str) {
-    let pattern = new RegExp(
-      "^(https?:\\/\\/)?" + // protocol
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-        "(\\#[-a-z\\d_]*)?$",
-      "i"
-    ); // fragment locator
-    return !!pattern.test(str);
+  function isUrlValid(userInput) {
+    var regexQuery =
+      "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
+    var url = new RegExp(regexQuery, "i");
+    return url.test(userInput);
   }
+
+  function checkImage(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
+
 })();
