@@ -7,6 +7,8 @@
     padding: 10px;
     font-family:Comic Sans MS;
     font-weight:bold;
+    background-color: cadetblue;
+    border:1px solid black;
   }
   
   .child{
